@@ -64,46 +64,20 @@ img { max-width: 100%; display: block; }
 .btn-lg { padding: 14px 32px; font-size: 1rem; }
 .btn-sm { padding: 8px 16px; font-size: 0.85rem; }
 
-.btn-primary {
-  background-color: var(--primary);
-  color: var(--white);
-}
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
+.btn-primary { background-color: var(--primary); color: var(--white); }
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
-.btn-outline {
-  background-color: transparent;
-  color: var(--dark);
-  border: 1px solid var(--border);
-}
-.btn-outline:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
+.btn-outline { background-color: transparent; color: var(--dark); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 
-.btn-white {
-  background-color: var(--white);
-  color: var(--primary);
-}
-.btn-white:hover {
-  background-color: #f0f0f0;
-}
+.btn-white { background-color: var(--white); color: var(--primary); }
+.btn-white:hover { background-color: #f0f0f0; }
 
-.btn-glass {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-.btn-glass:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+.btn-glass { background-color: rgba(255, 255, 255, 0.1); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); }
+.btn-glass:hover { background-color: rgba(255, 255, 255, 0.2); }
 
 /* =========================================
-   NAVBAR
+   NAVBAR Y MENÚ MÓVIL
    ========================================= */
 .navbar {
   position: fixed;
@@ -125,10 +99,14 @@ img { max-width: 100%; display: block; }
 .logo-img { height: 40px; width: auto; border-radius: 50%; }
 .logo-text { font-weight: 800; font-size: 1.2rem; color: var(--dark); }
 
+.nav-menu { display: flex; align-items: center; gap: 40px; }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a { font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
 .nav-links a:hover { color: var(--primary); }
 .nav-actions { display: flex; gap: 12px; }
+
+/* Botón hamburguesa (Oculto en PC) */
+.mobile-menu-btn { display: none; color: var(--dark); background: none; border: none; cursor: pointer; padding: 8px; }
 
 /* =========================================
    HERO SECTION
@@ -144,33 +122,23 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-bg {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 1; 
-  /* RUTA DE LA IMAGEN AÉREA */
   background-image: url('../assets/img/fondo-colonia.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: cover; background-position: center; background-repeat: no-repeat;
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 2; 
   background: linear-gradient(90deg, rgba(26, 17, 12, 0.9) 0%, rgba(211, 84, 0, 0.8) 60%, rgba(211, 84, 0, 0.3) 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
 }
 
 .hero-content {
-  position: relative;
-  z-index: 3; 
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
+  position: relative; z-index: 3; 
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
+  align-items: center; width: 100%;
 }
 
 .badge {
@@ -199,12 +167,10 @@ img { max-width: 100%; display: block; }
 
 .hero-buttons { display: flex; gap: 16px; }
 
-/* Tarjeta Flotante */
 .hero-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  padding: 32px;
-  border-radius: var(--radius-lg);
+  padding: 32px; border-radius: var(--radius-lg);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -224,27 +190,18 @@ img { max-width: 100%; display: block; }
 .section { padding: 100px 0; }
 .section-activities { background-color: var(--white); }
 
-.section-header {
-  display: flex; justify-content: space-between;
-  align-items: flex-end; margin-bottom: 48px;
-}
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
 .section-title { font-size: 2.2rem; color: var(--dark); margin-bottom: 8px; }
 .section-subtitle { color: var(--text-muted); font-size: 1.1rem; }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-}
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
 
 /* =========================================
-   TARJETAS DE PROYECTOS
+   TARJETAS DE PROYECTOS Y SERVICIOS
    ========================================= */
 .proj-card {
-  background: var(--white);
-  padding: 32px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  background: var(--white); padding: 32px;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
   transition: transform 0.3s, box-shadow 0.3s;
   border: 1px solid var(--border);
 }
@@ -269,25 +226,16 @@ img { max-width: 100%; display: block; }
 /* =========================================
    SECCIÓN DE ACTIVIDADES (EVENTOS)
    ========================================= */
-.grid-activities {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
+.grid-activities { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 
 .event-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column;
 }
 .event-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 
-/* Evento Destacado */
 .event-featured { grid-row: span 2; background: var(--bg-light); }
 
 .event-image { position: relative; width: 100%; height: 350px; }
@@ -316,7 +264,6 @@ img { max-width: 100%; display: block; }
 .event-details { background: rgba(0, 0, 0, 0.03); padding: 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-muted); }
 .event-details p { margin-bottom: 8px; }
 .event-details p:last-child { margin-bottom: 0; }
-
 .event-desc { color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
 
 /* =========================================
@@ -344,19 +291,43 @@ img { max-width: 100%; display: block; }
    RESPONSIVE
    ========================================= */
 @media (max-width: 992px) {
+  .mobile-menu-btn { display: block; }
+
+  /* Menú desplegable móvil */
+  .nav-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Oculto por defecto */
+    transition: clip-path 0.3s ease-in-out;
+  }
+
+  .nav-menu.is-open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Visible */
+  }
+
+  .nav-links { flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+  .nav-actions { flex-direction: column; width: 100%; }
+  .nav-actions .btn { width: 100%; }
+
   .hero-content { grid-template-columns: 1fr; }
   .hero-text h1 { font-size: 2.8rem; }
   .hero-card { max-width: 500px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .banner-inner { flex-direction: column; text-align: center; }
   
-  /* Responsive de Actividades */
   .grid-activities { grid-template-columns: 1fr; }
   .event-featured { grid-row: span 1; }
 }
 
 @media (max-width: 768px) {
-  .nav-links, .nav-actions { display: none; }
   .hero-text h1 { font-size: 2.2rem; }
   .hero-buttons { flex-direction: column; }
   .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }

@@ -1,5 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Animación para que los elementos aparezcan al hacer scroll
+  
+  // ==========================================
+  // 1. LÓGICA DEL MENÚ MÓVIL (HAMBURGUESA)
+  // ==========================================
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (mobileMenuBtn && navMenu) {
+    // Abrir/Cerrar al hacer clic en las 3 líneas
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('is-open');
+    });
+
+    // Cerrar el menú automáticamente si se da clic en un enlace
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('is-open');
+      });
+    });
+  }
+
+  // ==========================================
+  // 2. ANIMACIONES AL HACER SCROLL
+  // ==========================================
   const observerOptions = {
     root: null,
     rootMargin: "0px",
@@ -26,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Agregamos la clase visible para la animación
+// Inyectamos la clase visible para la animación
 const style = document.createElement('style');
 style.innerHTML = `
   .visible {

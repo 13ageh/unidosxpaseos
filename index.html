@@ -22,18 +22,30 @@
         <span class="logo-text">Unidos por Paseos</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#actividades">Actividades</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+      <!-- Contenedor del menú para control móvil -->
+      <div class="nav-menu" id="nav-menu">
+        <nav class="nav-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#actividades">Actividades</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
 
-      <div class="nav-actions">
-        <a href="#contacto" class="btn btn-outline">Iniciar Sesión</a>
-        <a href="#contacto" class="btn btn-primary">Únete</a>
+        <div class="nav-actions">
+          <a href="#contacto" class="btn btn-outline">Iniciar Sesión</a>
+          <a href="#contacto" class="btn btn-primary">Únete</a>
+        </div>
       </div>
+
+      <!-- Botón de hamburguesa (solo visible en móvil) -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </header>
 
