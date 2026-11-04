@@ -32,9 +32,10 @@
           <a href="#contacto">Contacto</a>
         </nav>
 
+        <!-- Botones de acción actualizados con onclick -->
         <div class="nav-actions">
-          <a href="#contacto" class="btn btn-outline">Iniciar Sesión</a>
-          <a href="#contacto" class="btn btn-primary">Únete</a>
+          <button class="btn btn-outline" onclick="abrirModal('modal-login')">Iniciar Sesión</button>
+          <button class="btn btn-primary" onclick="abrirModal('modal-registro')">Únete</button>
         </div>
       </div>
 
@@ -282,6 +283,61 @@
       <p>&copy; 2026 Unidos por Paseos. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <!-- ======================= MODALES (LOGIN Y REGISTRO) ======================= -->
+  
+  <!-- Modal de Iniciar Sesión -->
+  <div class="modal-overlay" id="modal-login">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModal('modal-login')">&times;</button>
+      <div class="modal-header">
+        <h2>Bienvenido de nuevo</h2>
+        <p>Ingresa a tu cuenta para gestionar tu comunidad.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Demo: Aquí iniciaría sesión.');">
+        <div class="input-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@correo.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
+        <p class="modal-footer-text">¿No tienes cuenta? <a href="#" onclick="cerrarModal('modal-login'); abrirModal('modal-registro');">Regístrate aquí</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Registro (Únete) -->
+  <div class="modal-overlay" id="modal-registro">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModal('modal-registro')">&times;</button>
+      <div class="modal-header">
+        <h2>Únete a la Comunidad</h2>
+        <p>Regístrate para participar en las decisiones de Paseos del Sol.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Demo: Usuario registrado con éxito.');">
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre" required>
+        </div>
+        <div class="input-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@correo.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" placeholder="Crea una contraseña segura" required>
+        </div>
+        <label class="checkbox-group">
+          <input type="checkbox" required>
+          <span>Acepto el Aviso de Privacidad y el tratamiento de mis datos.</span>
+        </label>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Crear mi cuenta</button>
+      </form>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
