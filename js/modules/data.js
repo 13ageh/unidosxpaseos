@@ -10,7 +10,7 @@ const defaultEvents = [
     location: "Parque Marlla Arzate, Paseos del Sol 2a Sección",
     time: "11:00 AM a 9:00 PM",
     desc: "Emprendedores locales, productos únicos, regalos y detalles, ropa y accesorios, ¡y muchas cosas más! ¡Ven con tu familia y disfruta de un espacio de convivencia, consume local y apoya a nuestra comunidad!",
-    image: "assets/img/bazar-otono.jpg"
+    image: "assets/img/bazar_otono.jpeg"
   },
   {
     id: "2",
