@@ -1,16 +1,16 @@
-// Datos por defecto (los que ya tenías)
+// Datos por defecto (los que ve todo el mundo al entrar por primera vez)
 const defaultEvents = [
   {
     id: "1",
     featured: true,
     tag: "Evento Especial",
-    title: "Bazar de Halloween",
-    dateDay: "31",
-    dateMonth: "OCT",
-    location: "Parque en Felipe Zetter (entre Rafael Vaca y Marlla Arzate)",
-    time: "12:00 PM a 8:00 PM",
-    desc: "Comida típica, regalos, ropa, artículos para mascotas y más. ¡Asiste, consume local y celebremos nuestras raíces!",
-    image: "assets/img/bazar-halloween.jpg"
+    title: "Bazar de Otoño",
+    dateDay: "28",
+    dateMonth: "NOV",
+    location: "Parque Marlla Arzate, Paseos del Sol 2a Sección",
+    time: "11:00 AM a 9:00 PM",
+    desc: "Emprendedores locales, productos únicos, regalos y detalles, ropa y accesorios, ¡y muchas cosas más! ¡Ven con tu familia y disfruta de un espacio de convivencia, consume local y apoya a nuestra comunidad!",
+    image: "assets/img/bazar-otono.jpg"
   },
   {
     id: "2",
@@ -38,33 +38,38 @@ const defaultEvents = [
   }
 ];
 
+// Función para obtener los eventos
 export function getEvents() {
   const saved = localStorage.getItem('paseos_events');
   if (saved) {
     return JSON.parse(saved);
   } else {
-    // Si no hay nada guardado, guardamos los por defecto
+    // Si el navegador del usuario no tiene datos guardados, le mostramos los de Otoño
     localStorage.setItem('paseos_events', JSON.stringify(defaultEvents));
     return defaultEvents;
   }
 }
 
+// Función para guardar cambios (desde el admin)
 export function saveEvents(events) {
   localStorage.setItem('paseos_events', JSON.stringify(events));
 }
 
+// Función para borrar (desde el admin)
 export function deleteEvent(id) {
   let events = getEvents();
   events = events.filter(e => e.id !== id);
   saveEvents(events);
 }
 
+// Función para agregar (desde el admin)
 export function addEvent(event) {
   let events = getEvents();
   events.push(event);
   saveEvents(events);
 }
 
+// Función para editar (desde el admin)
 export function updateEvent(updatedEvent) {
   let events = getEvents();
   const index = events.findIndex(e => e.id === updatedEvent.id);
