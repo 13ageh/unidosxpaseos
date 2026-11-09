@@ -22,7 +22,6 @@
         <span class="logo-text">Unidos por Paseos</span>
       </a>
 
-      <!-- Contenedor del menú para control móvil -->
       <div class="nav-menu" id="nav-menu">
         <nav class="nav-links">
           <a href="#inicio">Inicio</a>
@@ -32,14 +31,12 @@
           <a href="#contacto">Contacto</a>
         </nav>
 
-        <!-- Botones de acción actualizados con onclick -->
         <div class="nav-actions">
           <button class="btn btn-outline" onclick="abrirModal('modal-login')">Iniciar Sesión</button>
           <button class="btn btn-primary" onclick="abrirModal('modal-registro')">Únete</button>
         </div>
       </div>
 
-      <!-- Botón de hamburguesa (solo visible en móvil) -->
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -66,7 +63,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta flotante estilo Glassmorphism -->
       <div class="hero-card">
         <div class="card-header">
           <span class="icon">📢</span>
@@ -80,7 +76,7 @@
     </div>
   </section>
 
-  <!-- ======================= PROYECTOS (Largo Plazo) ======================= -->
+  <!-- ======================= PROYECTOS ======================= -->
   <section class="section" id="proyectos">
     <div class="container">
       <div class="section-header">
@@ -119,7 +115,7 @@
     </div>
   </section>
 
-  <!-- ======================= ACTIVIDADES (Corto Plazo / Eventos) ======================= -->
+  <!-- ======================= ACTIVIDADES (DINÁMICO) ======================= -->
   <section class="section section-activities" id="actividades">
     <div class="container">
       <div class="section-header">
@@ -130,60 +126,9 @@
         <a href="#contacto" class="btn btn-outline">Suscríbete al boletín</a>
       </div>
 
-      <div class="grid-activities">
-        <!-- Tarjeta de Evento Destacado (Bazar) -->
-        <article class="event-card event-featured">
-          <div class="event-image">
-            <img src="assets/img/bazar-halloween.jpg" alt="Bazar de Halloween" />
-            <span class="event-date-badge"><strong>31</strong> OCT</span>
-          </div>
-          <div class="event-content">
-            <span class="event-tag">Evento Especial</span>
-            <h3>Bazar de Halloween</h3>
-            <div class="event-details">
-              <p>📍 <strong>Ubicación:</strong> Parque en Felipe Zetter (entre Rafael Vaca y Marlla Arzate)</p>
-              <p>⏰ <strong>Horario:</strong> 12:00 PM a 8:00 PM</p>
-            </div>
-            <p class="event-desc">Comida típica, regalos, ropa, artículos para mascotas y más. ¡Asiste, consume local y celebremos nuestras raíces!</p>
-            <a href="#" class="btn btn-primary btn-sm" style="align-self: flex-start;">Ver detalles del evento</a>
-          </div>
-        </article>
-
-        <!-- Tarjeta de Evento Normal -->
-        <article class="event-card">
-          <div class="event-content">
-            <span class="event-tag">Comunidad</span>
-            <div class="event-header-row">
-              <div class="event-date-small">
-                <strong>15</strong><span>NOV</span>
-              </div>
-              <h3>Jornada de Limpieza</h3>
-            </div>
-            <p class="event-desc">Mantenimiento de áreas verdes y recolección de basura en los parques principales. Trae tus guantes.</p>
-            <div class="event-details">
-              <p>📍 <strong>Punto de encuentro:</strong> Casa de Colonos</p>
-              <p>⏰ <strong>Horario:</strong> 08:00 AM</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta de Evento Normal -->
-        <article class="event-card">
-          <div class="event-content">
-            <span class="event-tag">Asamblea</span>
-            <div class="event-header-row">
-              <div class="event-date-small">
-                <strong>25</strong><span>NOV</span>
-              </div>
-              <h3>Asamblea Vecinal</h3>
-            </div>
-            <p class="event-desc">Presentación de avances del Plan Maestro y toma de decisiones sobre el presupuesto del próximo año.</p>
-            <div class="event-details">
-              <p>📍 <strong>Ubicación:</strong> Casa de Colonos</p>
-              <p>⏰ <strong>Horario:</strong> 10:00 AM</p>
-            </div>
-          </div>
-        </article>
+      <!-- ESTE ES EL CONTENEDOR QUE LLENA EL JAVASCRIPT -->
+      <div class="grid-activities" id="activities-container">
+        <!-- Contenido dinámico generado por JS -->
       </div>
     </div>
   </section>
@@ -284,7 +229,7 @@
     </div>
   </footer>
 
-  <!-- ======================= MODALES (LOGIN Y REGISTRO) ======================= -->
+  <!-- ======================= MODALES ======================= -->
   
   <!-- Modal de Iniciar Sesión -->
   <div class="modal-overlay" id="modal-login">
@@ -294,14 +239,15 @@
         <h2>Bienvenido de nuevo</h2>
         <p>Ingresa a tu cuenta para gestionar tu comunidad.</p>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Demo: Aquí iniciaría sesión.');">
+      <!-- FORMULARIO CON ID PARA EL LOGIN DEL ADMIN -->
+      <form id="login-form">
         <div class="input-group">
-          <label>Correo electrónico</label>
-          <input type="email" placeholder="tu@correo.com" required>
+          <label>Correo electrónico o Usuario</label>
+          <input type="text" id="login-user" placeholder="Ingresa tu usuario" required>
         </div>
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••" required>
+          <input type="password" id="login-pass" placeholder="••••••••" required>
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
         <p class="modal-footer-text">¿No tienes cuenta? <a href="#" onclick="cerrarModal('modal-login'); abrirModal('modal-registro');">Regístrate aquí</a></p>
@@ -339,6 +285,7 @@
     </div>
   </div>
 
+  <!-- SCRIPT TIPO MÓDULO -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

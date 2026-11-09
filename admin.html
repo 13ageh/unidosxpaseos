@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin | Unidos por Paseos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Estilos exclusivos del panel */
+    body { background: #f4f6f8; padding-top: 100px; }
+    .admin-container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .admin-card { background: #fff; padding: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-bottom: 30px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-grid .full { grid-column: span 2; }
+    .admin-card label { font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px; }
+    .admin-card input[type="text"], .admin-card textarea { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; }
+    .admin-card textarea { resize: vertical; height: 80px; }
+    .table-events { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .table-events th, .table-events td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    .table-events th { background: #f8f9fa; font-weight: 600; }
+    .action-btn { padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; border: none; font-weight: 600; margin-right: 5px; }
+    .btn-edit { background: #FFF3E0; color: var(--primary); }
+    .btn-delete { background: #FFEBEE; color: #D32F2F; }
+    .checkbox-group { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <span class="logo-text">Unidos por Paseos (Admin)</span>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline">Volver al sitio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <div class="admin-header">
+      <h1>Gestión de Actividades</h1>
+    </div>
+
+    <!-- Formulario Crear/Editar -->
+    <div class="admin-card">
+      <h2 id="form-title" style="margin-bottom: 20px;">Crear Nueva Actividad</h2>
+      <form id="event-form">
+        <input type="hidden" id="event-id" />
+        <div class="form-grid">
+          <div>
+            <label>Título</label>
+            <input type="text" id="event-title" required placeholder="Ej: Bazar de Navidad" />
+          </div>
+          <div>
+            <label>Categoría / Etiqueta</label>
+            <input type="text" id="event-tag" required placeholder="Ej: Evento Especial, Comunidad" />
+          </div>
+          <div>
+            <label>Día (Número)</label>
+            <input type="text" id="event-day" required placeholder="Ej: 24" />
+          </div>
+          <div>
+            <label>Mes (Texto)</label>
+            <input type="text" id="event-month" required placeholder="Ej: DIC" />
+          </div>
+          <div>
+            <label>Ubicación</label>
+            <input type="text" id="event-location" required placeholder="Lugar del evento" />
+          </div>
+          <div>
+            <label>Horario</label>
+            <input type="text" id="event-time" required placeholder="Ej: 10:00 AM" />
+          </div>
+          <div class="full">
+            <label>Descripción</label>
+            <textarea id="event-desc" required placeholder="Detalles del evento..."></textarea>
+          </div>
+          <div class="full">
+            <label>URL de la Imagen (Opcional - Solo si es destacado)</label>
+            <input type="text" id="event-image" placeholder="assets/img/mi-imagen.jpg" />
+          </div>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="event-featured" />
+          <label for="event-featured" style="margin:0; cursor:pointer;">Marcar como Evento Destacado (Tarjeta Grande)</label>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button type="submit" class="btn btn-primary">Guardar Actividad</button>
+          <button type="button" id="btn-cancel" class="btn btn-outline" style="display:none;">Cancelar Edición</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tabla de Eventos -->
+    <div class="admin-card">
+      <h2>Actividades Actuales</h2>
+      <table class="table-events">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Destacado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="events-table-body">
+          <!-- JS inyectará las filas aquí -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
