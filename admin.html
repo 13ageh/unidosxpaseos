@@ -36,7 +36,9 @@
         <span class="logo-text">Unidos por Paseos (Admin)</span>
       </a>
       <div class="nav-actions">
-        <a href="index.html" class="btn btn-outline">Volver al sitio</a>
+        <!-- BOTÓN DE CERRAR SESIÓN -->
+        <button id="btn-logout" class="btn btn-outline" style="color: #D32F2F; border-color: #D32F2F;">Cerrar Sesión</button>
+        <a href="index.html" class="btn btn-primary">Volver al sitio</a>
       </div>
     </div>
   </header>
@@ -118,6 +120,26 @@
     </div>
   </main>
 
+  <!-- SCRIPT DE SEGURIDAD (Auth Guard) -->
+  <script>
+    // Verificamos si existe el token en el navegador
+    const token = localStorage.getItem('paseos_token');
+    const userStr = localStorage.getItem('paseos_user');
+
+    if (!token || !userStr) {
+      // Si no hay token, lo pateamos al inicio
+      window.location.href = 'index.html';
+    } else {
+      const user = JSON.parse(userStr);
+      // Si no es admin, también lo pateamos
+      if (user.role !== 'super_admin' && user.role !== 'staff_admin') {
+        alert('Acceso denegado. No tienes permisos de administrador.');
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+  
+  <!-- Tu script actual del admin -->
   <script type="module" src="js/admin.js"></script>
 </body>
 </html>

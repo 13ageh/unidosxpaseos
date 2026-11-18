@@ -1,6 +1,24 @@
 import { getEvents, addEvent, updateEvent, deleteEvent } from './modules/data.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // ==========================================
+  // 1. LÓGICA DE CERRAR SESIÓN
+  // ==========================================
+  const btnLogout = document.getElementById('btn-logout');
+  if (btnLogout) {
+    btnLogout.addEventListener('click', () => {
+      // Destruimos la sesión
+      localStorage.removeItem('paseos_token');
+      localStorage.removeItem('paseos_user');
+      // Redirigimos a la página principal
+      window.location.href = 'index.html';
+    });
+  }
+
+  // ==========================================
+  // 2. LÓGICA DEL PANEL DE ADMINISTRACIÓN
+  // ==========================================
   const form = document.getElementById('event-form');
   const tableBody = document.getElementById('events-table-body');
   const formTitle = document.getElementById('form-title');
