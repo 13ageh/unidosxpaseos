@@ -3,7 +3,7 @@ export async function renderEvents() {
   if (!container) return;
 
   try {
-    const response = await fetch('http://localhost:3000/api/events');
+    const response = await fetch('https://api.unidosxpaseos.com.mx/api/events');
     const events = await response.json();
 
     container.innerHTML = ''; 
