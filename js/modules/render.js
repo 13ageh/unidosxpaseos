@@ -1,3 +1,18 @@
+// Función para convertir "28" y "NOV" a un objeto Date real
+function getRealDate(day, monthStr) {
+  const months = { ENE: 0, FEB: 1, MAR: 2, ABR: 3, MAY: 4, JUN: 5, JUL: 6, AGO: 7, SEP: 8, OCT: 9, NOV: 10, DIC: 11 };
+  const month = months[monthStr.toUpperCase()] !== undefined ? months[monthStr.toUpperCase()] : 0;
+  const year = new Date().getFullYear();
+  
+  let eventDate = new Date(year, month, parseInt(day));
+  
+  // Si la fecha ya pasó este año, asumimos que es para el próximo año
+  if (eventDate < new Date()) {
+    eventDate.setFullYear(year + 1);
+  }
+  return eventDate;
+}
+
 export async function renderEvents() {
   const container = document.getElementById('activities-container');
   if (!container) return;
@@ -6,6 +21,38 @@ export async function renderEvents() {
     const response = await fetch('https://api.unidosxpaseos.com.mx/api/events');
     const events = await response.json();
 
+    // ==========================================
+    // 1. PINTAR LA TARJETA DEL HERO (El evento más cercano)
+    // ==========================================
+    const heroTitle = document.getElementById('hero-event-title');
+    const heroDate = document.getElementById('hero-event-date');
+    const heroDesc = document.getElementById('hero-event-desc');
+
+    if (events.length > 0) {
+      // Ordenamos los eventos por fecha real (del más cercano al más lejano)
+      const sortedEvents = events.map(e => ({
+        ...e,
+        realDate: getRealDate(e.dateDay, e.dateMonth)
+      })).sort((a, b) => a.realDate - b.realDate);
+
+      const nextEvent = sortedEvents[0]; // Tomamos el primero (el más cercano)
+
+      if (heroTitle) {
+        heroTitle.textContent = nextEvent.title;
+        heroDate.textContent = `${nextEvent.dateDay} de ${nextEvent.dateMonth} · ${nextEvent.time}`;
+        heroDesc.textContent = nextEvent.description;
+      }
+    } else {
+      if (heroTitle) {
+        heroTitle.textContent = "No hay eventos próximos";
+        heroDate.textContent = "Mantente al pendiente";
+        heroDesc.textContent = "Pronto publicaremos nuevas actividades para la comunidad.";
+      }
+    }
+
+    // ==========================================
+    // 2. PINTAR LA SECCIÓN DE ACTIVIDADES (La cuadrícula)
+    // ==========================================
     container.innerHTML = ''; 
 
     if (events.length === 0) {
@@ -60,6 +107,6 @@ export async function renderEvents() {
     });
   } catch (error) {
     console.error("Error cargando eventos:", error);
-    container.innerHTML = '<p style="text-align:center; width:100%;">Error al conectar con el servidor.</p>';
+    if(container) container.innerHTML = '<p style="text-align:center; width:100%;">Error al conectar con el servidor.</p>';
   }
 }
