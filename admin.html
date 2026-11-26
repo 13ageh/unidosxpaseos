@@ -67,8 +67,22 @@
             <input type="text" id="event-day" required placeholder="Ej: 24" />
           </div>
           <div>
-            <label>Mes (Texto)</label>
-            <input type="text" id="event-month" required placeholder="Ej: DIC" />
+            <label>Mes</label>
+            <select id="event-month" required style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit;">
+              <option value="" disabled selected>Selecciona un mes</option>
+              <option value="ENE">Enero (ENE)</option>
+              <option value="FEB">Febrero (FEB)</option>
+              <option value="MAR">Marzo (MAR)</option>
+              <option value="ABR">Abril (ABR)</option>
+              <option value="MAY">Mayo (MAY)</option>
+              <option value="JUN">Junio (JUN)</option>
+              <option value="JUL">Julio (JUL)</option>
+              <option value="AGO">Agosto (AGO)</option>
+              <option value="SEP">Septiembre (SEP)</option>
+              <option value="OCT">Octubre (OCT)</option>
+              <option value="NOV">Noviembre (NOV)</option>
+              <option value="DIC">Diciembre (DIC)</option>
+            </select>
           </div>
           <div>
             <label>Ubicación</label>
